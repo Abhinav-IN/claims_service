@@ -9,9 +9,10 @@ import { SeedModule } from './seed/seed.module.js';
 import { AuthModule } from './auth/auth.module.js';
 import { jwtConfig } from './config/jwt.config.js';
 import { PackagesModule } from './packages/packages.module.js';
+import { CoverageModule } from './coverage/coverage.module.js';
 
 @Module({
-  imports: [ConfigModule.forRoot({isGlobal : true, load : [databaseConfig, jwtConfig]}), DatabaseModule, SeedModule, AuthModule, PackagesModule],
+  imports: [ConfigModule.forRoot({isGlobal : true, load : [databaseConfig, jwtConfig]}), DatabaseModule, SeedModule, AuthModule, PackagesModule, CoverageModule],
   controllers: [AppController],
   providers: [AppService],
 })

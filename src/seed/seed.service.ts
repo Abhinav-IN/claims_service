@@ -52,6 +52,11 @@ export class SeedService implements OnModuleInit {
         password: await bcrypt.hash('Pmjay@123', 10),
         role: Role.PMJAY_DESK,
       },
+      {
+        userName: 'patient1',
+        password: await bcrypt.hash('Patient@123', 10),
+        role: Role.PATIENT,
+      }
     ]);
   }
 
