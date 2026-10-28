@@ -6,9 +6,11 @@ import { ConfigModule } from '@nestjs/config';
 import { databaseConfig } from './config/database.config.js';
 import { SeedService } from './seed/seed.service.js';
 import { SeedModule } from './seed/seed.module.js';
+import { AuthModule } from './auth/auth.module.js';
+import { jwtConfig } from './config/jwt.config.js';
 
 @Module({
-  imports: [ConfigModule.forRoot({isGlobal : true, load : [databaseConfig]}), DatabaseModule, SeedModule],
+  imports: [ConfigModule.forRoot({isGlobal : true, load : [databaseConfig, jwtConfig]}), DatabaseModule, SeedModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })

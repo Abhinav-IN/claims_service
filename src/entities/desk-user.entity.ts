@@ -1,5 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { Role } from '../common/enums.js';
+import { Role } from '../common/enums/claims.enums.js';
 
 @Entity('desk_users')
 export class DeskUser {

@@ -1,6 +1,6 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn,} from 'typeorm';
 import { TreatmentCase } from './treatment-case.entity.js';
-import { ClaimStatus } from '../common/enums.js';
+import { ClaimStatus } from '../common/enums/claims.enums.js';
 
 @Entity('claims')
 export class Claim {

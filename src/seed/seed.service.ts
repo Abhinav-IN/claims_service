@@ -7,7 +7,7 @@ import { TpaPolicy } from '../entities/tpa-policy.entity.js';
 import { PmjayFamily } from '../entities/pmjay-family.entity.js';
 import { PmjayMember } from '../entities/pmjay-member.entity.js';
 import { HealthPackage } from '../entities/health-package.entity.js';
-import { Role } from '../common/enums.js';
+import { Role } from '../common/enums/claims.enums.js';
 
 // YYYY-MM-DD, offset in days from today
 const day = (offset: number): string => {
