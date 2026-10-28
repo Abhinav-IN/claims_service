@@ -2,7 +2,8 @@ import { Role } from "../common/enums/claims.enums.js";
 import { Request } from 'express';
 
 export interface JwtPayload {
-  id: string;
+  id: number;
+  userName: string;
   role: Role;
 }
 

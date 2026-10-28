@@ -10,9 +10,10 @@ import { AuthModule } from './auth/auth.module.js';
 import { jwtConfig } from './config/jwt.config.js';
 import { PackagesModule } from './packages/packages.module.js';
 import { CoverageModule } from './coverage/coverage.module.js';
+import { CasesModule } from './cases/cases.module.js';
 
 @Module({
-  imports: [ConfigModule.forRoot({isGlobal : true, load : [databaseConfig, jwtConfig]}), DatabaseModule, SeedModule, AuthModule, PackagesModule, CoverageModule],
+  imports: [ConfigModule.forRoot({isGlobal : true, load : [databaseConfig, jwtConfig]}), DatabaseModule, SeedModule, AuthModule, PackagesModule, CoverageModule, CasesModule],
   controllers: [AppController],
   providers: [AppService],
 })

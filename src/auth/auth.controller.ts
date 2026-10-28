@@ -15,4 +15,34 @@ export class AuthController {
   async login(@Body() user: AuthDto): Promise<AuthResponseDto> {
     return this.auth.login_service(user.userName, user.password);
   }
+
+  @Post('login-doctor')
+  async login_doctor(@Body() user: AuthDto): Promise<AuthResponseDto> {
+    return this.auth.login_doctor_service(user.userName, user.password);
+  }
+
+  @Post('login-patient1')
+  async login_patient1(@Body() user: AuthDto): Promise<AuthResponseDto> {
+    return this.auth.login_patient1_service(user.userName, user.password);
+  }
+
+  @Post('login-patient2')
+  async login_patient2(@Body() user: AuthDto): Promise<AuthResponseDto> {
+    return this.auth.login_patient2_service(user.userName, user.password);
+  }
+
+  @Post('login-patient3')
+  async login_patient3(@Body() user: AuthDto): Promise<AuthResponseDto> {
+    return this.auth.login_patient3_service(user.userName, user.password);
+  }
+
+  @Post('login-patient4')
+  async login_patient4(@Body() user: AuthDto): Promise<AuthResponseDto> {
+    return this.auth.login_patient4_service(user.userName, user.password);
+  }
+
+  @Post('login-patient5')
+  async login_patient5(@Body() user: AuthDto): Promise<AuthResponseDto> {
+    return this.auth.login_patient5_service(user.userName, user.password);
+  }
 }
