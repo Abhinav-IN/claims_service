@@ -1,6 +1,6 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn,} from 'typeorm';
 import { TreatmentCase } from './treatment-case.entity.js';
-import { PreauthStatus } from '../common/enums.js';
+import { PreauthStatus } from '../common/enums/claims.enums.js';
 
 @Entity('preauths')
 export class Preauth {

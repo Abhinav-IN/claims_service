@@ -1,5 +1,5 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn,} from 'typeorm';
-import { CaseStatus, PayerType } from '../common/enums.js';
+import { CaseStatus, PayerType } from '../common/enums/claims.enums.js';
 
 @Entity('treatment_cases')
 export class TreatmentCase {

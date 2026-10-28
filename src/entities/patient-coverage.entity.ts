@@ -1,5 +1,5 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { PayerType } from '../common/enums.js';
+import { PayerType } from '../common/enums/claims.enums.js';
 
 @Entity('patient_coverage')
 export class PatientCoverage {
