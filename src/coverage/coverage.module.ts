@@ -11,6 +11,7 @@ import { AuthModule } from '../auth/auth.module.js';
 @Module({
   imports: [TypeOrmModule.forFeature([PatientCoverage, TpaPolicy, PmjayFamily, PmjayMember]), AuthModule],
   providers: [CoverageService],
-  controllers: [CoverageController]
+  controllers: [CoverageController],
+  exports: [CoverageService]
 })
 export class CoverageModule {}

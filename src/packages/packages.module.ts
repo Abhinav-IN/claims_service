@@ -8,6 +8,7 @@ import { AuthModule } from '../auth/auth.module.js';
 @Module({
   imports: [TypeOrmModule.forFeature([HealthPackage]), AuthModule],
   providers: [PackagesService],
-  controllers: [PackagesController]
+  controllers: [PackagesController],
+  exports: [PackagesService]
 })
 export class PackagesModule {}
