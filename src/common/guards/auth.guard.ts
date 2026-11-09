@@ -1,38 +1,35 @@
-import { CanActivate, ExecutionContext, Injectable, UnauthorizedException, ForbiddenException,} from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
+import { CanActivate, ExecutionContext, Injectable, UnauthorizedException, ForbiddenException } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import type { AuthenticatedRequest, JwtPayload } from '../../interfaces/auth.interface.js';
+import type { AuthenticatedRequest } from '../../interfaces/auth.interface.js';
 import { Role } from '../enums/claims.enums.js';
 import { ROLES_KEY } from '../decorators/roles.decorator.js';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private readonly jwtService: JwtService, private readonly reflector: Reflector) {}
+  constructor(private readonly reflector: Reflector) {}
 
-  async canActivate(context: ExecutionContext): Promise<boolean> {
+  canActivate(context: ExecutionContext): boolean {
     const request = context.switchToHttp().getRequest<AuthenticatedRequest>();
 
-    const authHeader = request.headers.authorization;
+    const userId = request.headers['user_id'];
+    const role = request.headers['role'];
+    const userName = request.headers['user_name'];
 
-    if (!authHeader?.startsWith('Bearer ')) {
+    if (!userId || !role || !userName) {
       throw new UnauthorizedException('Authentication required');
     }
 
-    const token = authHeader.slice(7);
-
-    let payload: JwtPayload;
-
-    try {
-      payload = await this.jwtService.verifyAsync<JwtPayload>(token);
-    } catch {
-      throw new UnauthorizedException('Invalid or expired token');
+    if (
+      typeof userId !== 'string' || typeof userName !== 'string' || !Object.values(Role).includes(role as Role)
+    ) {
+      throw new UnauthorizedException('Invalid user credentials');
     }
 
-    if (!payload.id || !Object.values(Role).includes(payload.role)) {
-      throw new UnauthorizedException('Invalid token payload');
-    }
-
-    request.user = payload;
+    request.user = {
+      id: Number(userId),
+      userName: userName,
+      role: role as Role,
+    };
 
     const requiredRoles = this.reflector.getAllAndOverride<Role[]>(
       ROLES_KEY,
@@ -43,7 +40,7 @@ export class AuthGuard implements CanActivate {
       return true;
     }
 
-    if (!requiredRoles.includes(payload.role)) {
+    if (!requiredRoles.includes(role as Role)) {
       throw new ForbiddenException('Insufficient permissions');
     }
 

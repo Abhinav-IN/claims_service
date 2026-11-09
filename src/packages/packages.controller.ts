@@ -1,4 +1,3 @@
-
 import { Controller, Get, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiOkResponse, ApiTags, ApiUnauthorizedResponse, ApiForbiddenResponse } from '@nestjs/swagger';
 import { AuthGuard } from '../common/guards/auth.guard.js';
@@ -8,7 +7,6 @@ import { Role } from '../common/enums/claims.enums.js';
 import { PackageResponseDto } from '../dto/package.dto.js';
 
 @ApiTags('packages')
-@ApiBearerAuth()
 @UseGuards(AuthGuard)
 @Controller('api/v1/packages')
 export class PackagesController {

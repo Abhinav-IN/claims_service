@@ -8,7 +8,6 @@ import { Request } from 'express';
 import { VerifyCoverageDto } from '../dto/verify-coverage.dto.js';
 
 @ApiTags('coverage')
-@ApiBearerAuth()
 @UseGuards(AuthGuard)
 @Controller('/api/v1/coverage')
 export class CoverageController {
@@ -28,7 +27,7 @@ export class CoverageController {
   }
 
   @Get('/me')
-  @Roles(Role.PATIENT)
+  @Roles(Role.PATIENT, Role.DOCTOR)
   @ApiOkResponse({ description: 'Returns the current patient coverage' })
   async get_coverage(@Req() req: any) {
     return await this.coverageService.get_coverage_service(req.user.id);
