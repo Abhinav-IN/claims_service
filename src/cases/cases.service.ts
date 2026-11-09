@@ -216,7 +216,10 @@ export class CasesService {
       };
     }
 
-    const { payer, patient } = calcPmjaySplit(c.estimatedCost);
+    const { payer } = calcPmjaySplit(c.estimatedCost);
+
+    const patient = finalBill - payer;
+
     return {
       approvedAmount: c.estimatedCost,
       coPayPercent: 0,
