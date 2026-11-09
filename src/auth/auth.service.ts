@@ -15,7 +15,11 @@ export class AuthService {
     if (!user || !ok) {
       throw new UnauthorizedException('Invalid username or password');
     }
-    return;
+    return {
+      "user_id" : user.id,
+      "role" : user.role,
+      "user_name" : user.userName
+    };
   }
 
   async login_any_service(userName: string, password: string) {
