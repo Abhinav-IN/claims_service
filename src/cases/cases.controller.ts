@@ -39,7 +39,7 @@ export class CasesController {
     return this.casesService.create_case_service(req.user!, dto);
   }
 
-  @Get('/me')
+  @Get('/mine')
   @Roles(Role.PATIENT)
   @ApiOperation({ summary: 'Get the current patient’s cases' })
   @ApiOkResponse({ description: 'Patient cases retrieved successfully' })
